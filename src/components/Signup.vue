@@ -1,0 +1,52 @@
+<template>
+  <div class="signup">
+    <el-row type="flex" justify="center"">
+      <el-col :span="18">
+        <el-steps :active="currentStep" align-center finish-status="success">
+          <el-step title="Step 1" description="Some description"></el-step>
+          <el-step title="Step 2" description="Some description"></el-step>
+          <el-step title="Step 3" description="Some description"></el-step>
+          <el-step title="Step 4" description="Some description"></el-step>
+        </el-steps>
+      </el-col>
+    </el-row>
+    <el-row type="flex" justify="center" class="form-row">
+      <el-col :span="12">
+        <step-0 @success="next" v-if="currentStep == 0"></step-0>
+        <step-1 @success="next" v-if="currentStep == 1"></step-1>
+      </el-col>
+    </el-row>
+  </div>
+</template>
+<script>
+import Step0 from './form-steps/Step0'
+import Step1 from './form-steps/Step1'
+
+export default {
+  data () {
+    return {
+      currentStep: 0
+    }
+  },
+  components: {
+    Step0,
+    Step1
+  },
+  methods: {
+    next () {
+      console.log('next')
+      this.currentStep += 1
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.form-row {
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+.lead {
+  font-size: 24px;
+}
+</style>
+
