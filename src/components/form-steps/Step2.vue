@@ -6,7 +6,7 @@
           <el-upload
             class="avatar-uploader"
             drag
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://localhost:3000/api/lead/1/singleDocument?type=aadhar"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -19,7 +19,7 @@
           <el-upload
             class="avatar-uploader"
             drag
-            action="https://jsonplaceholder.typicode.com/posts/"
+            action="http://localhost:3000/api/lead/1/singleDocument?type=pan"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -65,13 +65,13 @@ export default {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
 
-      if (!isJPG) {
-        this.$message.error('Avatar picture must be JPG format!')
-      }
+      // if (!isJPG) {
+      //   this.$message.error('Avatar picture must be JPG format!')
+      // }
       if (!isLt2M) {
         this.$message.error('Avatar picture size can not exceed 2MB!')
       }
-      return isJPG && isLt2M
+      return isLt2M
     }
   }
 }
