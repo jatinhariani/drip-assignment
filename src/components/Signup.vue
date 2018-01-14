@@ -12,10 +12,10 @@
     </el-row>
     <el-row type="flex" justify="center" class="form-row">
       <el-col :span="12">
-        <step-0 @success="next" v-if="currentStep == 0"></step-0>
-        <step-1 @success="next" v-if="currentStep == 1"></step-1>
-        <step-2 @success="next" v-if="currentStep == 2"></step-2>
-        <step-3 @success="next" v-if="currentStep == 3"></step-3>
+        <step-0 @success="next" @back="back" v-if="currentStep == 0"></step-0>
+        <step-1 @success="next" @back="back" v-if="currentStep == 1"></step-1>
+        <step-2 @success="next" @back="back" v-if="currentStep == 2"></step-2>
+        <step-3 @success="next" @back="back" v-if="currentStep == 3"></step-3>
       </el-col>
     </el-row>
   </div>
@@ -40,8 +40,10 @@ export default {
   },
   methods: {
     next () {
-      console.log('next')
       this.currentStep += 1
+    },
+    back () {
+      this.currentStep -= 1
     }
   }
 }

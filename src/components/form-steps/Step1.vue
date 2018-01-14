@@ -1,36 +1,40 @@
 <template>
   <div>
-    <el-form ref="details-form" :model="sizeForm" label-width="120px" size="mini" :rules="rules">
+    <el-form ref="details-form" :model="lead" label-width="120px" size="mini" :rules="rules">
       <el-form-item label="Name" prop="name">
-        <el-input v-model="sizeForm.name" placeholder="John Doe"></el-input>
+        <el-input v-model="lead.name" placeholder="John Doe"></el-input>
       </el-form-item>
       <el-form-item label="Email" prop="email">
-        <el-input v-model="sizeForm.email" placeholder="email@domain.com"></el-input>
+        <el-input v-model="lead.email" placeholder="email@domain.com"></el-input>
       </el-form-item>
       <el-form-item label="Phone" prop="phone">
-        <el-input v-model="sizeForm.phone" placeholder="9999999999"></el-input>
-      </el-form-item>
+        <el-input v-model="lead.phone" placeholder="9999999999"></el-input>
+    </el-form-item>
       <el-form-item label="PAN No" prop="pan">
-        <el-input v-model="sizeForm.pan" placeholder="AAAAPA1111A"></el-input>
+        <el-input v-model="lead.pan" placeholder="AAAAPA1111A"></el-input>
       </el-form-item>
-      <el-form-item label="Company Name">
-        <el-input v-model="sizeForm.company" placeholder="Acme Industries"></el-input>
+      <el-form-item label="Company Name" prop="company">
+        <el-input v-model="lead.company" placeholder="Acme Industries"></el-input>
       </el-form-item>
       <el-form-item size="large">
         <el-button type="primary" @click="onSubmit">Next</el-button>
-        <el-button>Cancel</el-button>
+        <el-button type="default" @click="$emit('back')">Back</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
-      sizeForm: {
+      lead: {
         name: '',
-        email: ''
+        email: '',
+        pan: ''
       },
+      processing: false,
       rules: {
         name: [
           { required: true, message: 'Please input your Name', trigger: 'blur' },
@@ -44,13 +48,38 @@ export default {
         ],
         phone: [
           { pattern: /(^([0-9]{10})$)/, message: 'Please input a valid phone number', trigger: 'blur' }
-        ]
+        ],
+        company: []
       }
     }
   },
   methods: {
     onSubmit () {
-      this.$emit('success')
+      const component = this
+      this.$refs['details-form'].validate((valid) => {
+        if (valid) {
+          component.saveData()
+        } else {
+          console.log('error submit!!');
+          return false
+        }
+      })
+    },
+  saveData () {
+      this.processing = true
+        axios({
+          url: 'http://localhost:3000/api/lead',
+          method: 'post',
+          data: this.lead
+        })
+        .then(() => {
+          this.processing = false
+          this.$emit('success')
+        })
+        .catch(() => {
+          this.processing = false
+          console.log('Error')
+        })
     }
   }
 }
