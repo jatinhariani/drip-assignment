@@ -1,18 +1,53 @@
 <template>
   <div>
     <form>
-      <el-upload
-        class="avatar-uploader"
-        drag
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :show-file-list="false"
-        :on-success="handleAvatarSuccess"
-        :before-upload="beforeAvatarUpload">
-        <img v-if="imageUrl" :src="imageUrl" class="avatar">
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
-      </el-upload>
+      <el-row type="flex" justify="center" class="form-row">
+        <el-col :span="12">
+          <el-upload
+            class="avatar-uploader"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+          </el-upload>
+        </el-col>
+        <el-col :span="12">
+          <el-upload
+            class="avatar-uploader"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+          </el-upload>
+        </el-col>
+      </el-row>
+      <el-row type="flex" justify="center" class="form-row">
+        <el-col :span="24">
+          <el-upload
+            class="avatar-uploader"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+          </el-upload>
+        </el-col>
+      </el-row>
     </form>
+    <button class="el-button el-button--primary" @click="$emit('success')">
+      Next
+    </button>
   </div>
 </template>
 <script>
@@ -42,10 +77,15 @@ export default {
 }
 </script>
 <style lang="scss">
+.el-upload-dragger {
+  width: auto;
+}
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
+  display: block;
+  margin: 15px;
   position: relative;
   overflow: hidden;
 }

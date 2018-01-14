@@ -4,7 +4,7 @@
       <el-row>
         <el-col :span="24">
           <h1 class="main-logo">
-            My Amazing App
+            Onboarding 101
           </h1>
         </el-col>
       </el-row>

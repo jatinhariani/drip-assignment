@@ -3,10 +3,10 @@
     <el-row type="flex" justify="center">
       <el-col :span="18">
         <el-steps :active="currentStep" align-center finish-status="success">
-          <el-step title="Step 1" description="Some description"></el-step>
-          <el-step title="Step 2" description="Some description"></el-step>
-          <el-step title="Step 3" description="Some description"></el-step>
-          <el-step title="Step 4" description="Some description"></el-step>
+          <el-step title="Step 1" description="Welcome"></el-step>
+          <el-step title="Step 2" description="Basic Info"></el-step>
+          <el-step title="Step 3" description="Documents"></el-step>
+          <el-step title="Step 4" description="Finish"></el-step>
         </el-steps>
       </el-col>
     </el-row>
