@@ -61,18 +61,18 @@ export default {
         if (valid) {
           component.saveData()
         } else {
-          console.log('error submit!!');
+          console.log('error submit!!')
           return false
         }
       })
     },
-  saveData () {
+    saveData () {
       this.processing = true
-        axios({
-          url: 'http://localhost:3000/api/lead',
-          method: 'post',
-          data: this.lead
-        })
+      axios({
+        url: 'http://localhost:3000/api/lead',
+        method: 'post',
+        data: this.lead
+      })
         .then(() => {
           this.processing = false
           this.$emit('success')

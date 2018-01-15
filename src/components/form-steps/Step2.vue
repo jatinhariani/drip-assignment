@@ -2,67 +2,45 @@
   <div>
     <form>
       <el-row type="flex" justify="center" class="form-row">
-        <el-col :span="12">
-          <el-upload
-            class="avatar-uploader"
-            drag
-            action="http://localhost:3000/api/lead/1/singleDocument?type=aadhar"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload">
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
-            <i class="el-icon-upload"></i>
-            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
-          </el-upload>
-        </el-col>
-        <el-col :span="12">
-          <el-upload
-            class="avatar-uploader"
-            drag
-            action="http://localhost:3000/api/lead/1/singleDocument?type=pan"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload">
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
-            <i class="el-icon-upload"></i>
-            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
-          </el-upload>
-        </el-col>
-      </el-row>
-      <el-row type="flex" justify="center" class="form-row">
         <el-col :span="24">
           <el-upload
-            class="avatar-uploader"
+            class="upload-demo"
             drag
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload">
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            action="http://localhost:3000/api/lead/1/singleDocument"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :file-list="fileList"
+            multiple>
             <i class="el-icon-upload"></i>
             <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+            <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 2mb</div>
           </el-upload>
+          <button class="el-button el-button--primary" @click="$emit('success')">
+            Next
+          </button>
         </el-col>
       </el-row>
     </form>
-    <button class="el-button el-button--primary" @click="$emit('success')">
-      Next
-    </button>
   </div>
 </template>
 <script>
 export default {
   data () {
     return {
-      imageUrl: ''
+      imageUrl: '',
+      fileList: []
     }
   },
   methods: {
+    handlePreview () {
+    },
+    handleRemove () {
+    },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
     },
     beforeAvatarUpload (file) {
-      const isJPG = file.type === 'image/jpeg'
+      // const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
 
       // if (!isJPG) {
@@ -80,12 +58,11 @@ export default {
 .el-upload-dragger {
   width: auto;
 }
-.avatar-uploader .el-upload {
+.el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
   display: block;
-  margin: 15px;
   position: relative;
   overflow: hidden;
 }
