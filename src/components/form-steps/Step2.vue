@@ -10,14 +10,16 @@
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :file-list="fileList"
+            :on-success="uploadDone"
             multiple>
             <i class="el-icon-upload"></i>
-            <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+            <div class="el-upload__text">Upload your AADHAR, PAN and other documents</div>
             <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 2mb</div>
           </el-upload>
-          <button class="el-button el-button--primary" @click="$emit('success')">
-            Next
-          </button>
+          <div class="step-2-text-center">
+            <el-button type="primary" @click.prevent="$emit('success')" :loading="processing" v-if="uploaded">Finish</el-button>
+            <el-button type="default" @click="back">Back</el-button>
+          </div>
         </el-col>
       </el-row>
     </form>
@@ -30,7 +32,7 @@ export default {
       lead: {
         id: 0
       },
-      imageUrl: '',
+      uploaded: false,
       fileList: []
     }
   },
@@ -40,6 +42,13 @@ export default {
     }
   },
   methods: {
+    uploadDone () {
+      this.uploaded = true
+    },
+    back () {
+      this.uploaded = false
+      this.$emit('back')
+    },
     handlePreview () {
       // todo: something.
     },
@@ -65,6 +74,10 @@ export default {
 }
 </script>
 <style lang="scss">
+.step-2-text-center {
+  text-align: center;
+  margin-top: 20px;
+}
 .el-upload-dragger {
   width: auto;
 }
@@ -94,5 +107,9 @@ export default {
   width: 178px;
   height: 178px;
   display: block;
+}
+.el-upload__tip {
+  text-align: center;
+  margin-bottom: 10px;
 }
 </style>

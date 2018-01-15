@@ -16,13 +16,22 @@
         </el-col>
       </el-row>
     </el-main>
-    <el-footer>Footer</el-footer>
+    <el-footer height="40px">
+      <footer class="main-footer text-center">
+        &copy; 2018, Cosmos Investments
+      </footer>
+    </el-footer>
   </el-container>
 </template>
 <script>
 export default {}
 </script>
 <style lang="scss">
+.main-footer {
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
 .main-logo {
   margin: 15px 0;
   text-align: center;

@@ -17,9 +17,8 @@
         <el-input v-model="lead.company" placeholder="Acme Industries"></el-input>
       </el-form-item>
       <el-form-item size="large">
-        <el-button type="primary" @click="onSubmit">Next</el-button>
+        <el-button type="primary" @click="onSubmit" :loading="processing">Next</el-button>
         <el-button type="default" @click="$emit('back')">Back</el-button>
-        <el-button type="default" @click="$emit('success')">Skip</el-button>
       </el-form-item>
     </el-form>
   </div>

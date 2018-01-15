@@ -12,6 +12,9 @@
 export default {}
 </script>
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
 .get-started {
   text-align: center;
 }
