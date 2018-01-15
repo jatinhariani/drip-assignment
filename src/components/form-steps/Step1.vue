@@ -11,7 +11,7 @@
         <el-input v-model="lead.phone" placeholder="9999999999"></el-input>
     </el-form-item>
       <el-form-item label="PAN No" prop="pan">
-        <el-input v-model="lead.pan" placeholder="AAAAPA1111A"></el-input>
+        <el-input v-model="lead.pan" placeholder="AAAPA1111A"></el-input>
       </el-form-item>
       <el-form-item label="Company Name" prop="company">
         <el-input v-model="lead.company" placeholder="Acme Industries"></el-input>
@@ -84,5 +84,9 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+.el-form-item--mini.el-form-item,
+.el-form-item--small.el-form-item {
+  margin-bottom: 22px;
+}
 </style>

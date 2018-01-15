@@ -1,5 +1,6 @@
 <template>
   <div class="get-started">
+    <h1>Best Investing App Ever</h1>
     <p class="lead">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti totam nostrum eaque, porro cum, quis, vitae magni id perferendis nulla unde dolore delectus aut facilis.
     </p>

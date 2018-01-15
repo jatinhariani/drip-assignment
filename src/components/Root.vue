@@ -27,6 +27,10 @@
 export default {}
 </script>
 <style lang="scss">
+body {
+  background-image: radial-gradient(farthest-corner at 40px 40px,
+      #fff 0%, #fff8f8 100%);
+}
 .main-footer {
   text-align: center;
   line-height: 20px;

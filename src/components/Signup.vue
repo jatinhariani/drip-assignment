@@ -53,7 +53,10 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+.is-success .el-step__line {
+  background-color: #303133;
+}
 .form-row {
   padding-bottom: 30px;
   padding-top: 30px;

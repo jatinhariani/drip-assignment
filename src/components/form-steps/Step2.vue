@@ -7,6 +7,7 @@
             class="upload-demo"
             drag
             :action="fileURL"
+            :before-upload="beforeAvatarUpload"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :file-list="fileList"
@@ -59,16 +60,18 @@ export default {
       this.imageUrl = URL.createObjectURL(file.raw)
     },
     beforeAvatarUpload (file) {
-      // const isJPG = file.type === 'image/jpeg'
+      const isJPG = file.type === 'image/jpeg'
+      const isPNG = file.type === 'image/png'
       const isLt2M = file.size / 1024 / 1024 < 2
 
-      // if (!isJPG) {
-      //   this.$message.error('Avatar picture must be JPG format!')
-      // }
+      if (!isJPG && !isPNG) {
+        this.$message.error('Avatar picture must be JPG or PNG format!')
+      }
       if (!isLt2M) {
         this.$message.error('Avatar picture size can not exceed 2MB!')
       }
-      return isLt2M
+      console.log(file.type)
+      return isLt2M && (isJPG || isPNG)
     }
   }
 }
