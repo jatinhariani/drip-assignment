@@ -73,9 +73,9 @@ export default {
         method: 'post',
         data: this.lead
       })
-        .then(() => {
+        .then((result) => {
           this.processing = false
-          this.$emit('success')
+          this.$emit('success', result.data)
         })
         .catch(() => {
           this.processing = false

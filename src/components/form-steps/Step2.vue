@@ -6,7 +6,7 @@
           <el-upload
             class="upload-demo"
             drag
-            action="http://localhost:3000/api/lead/1/singleDocument"
+            :action="fileURL"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :file-list="fileList"
@@ -27,14 +27,24 @@
 export default {
   data () {
     return {
+      lead: {
+        id: 0
+      },
       imageUrl: '',
       fileList: []
     }
   },
+  computed: {
+    fileURL () {
+      return 'http://localhost:3000/api/lead/' + this.lead.id + '/singleDocument'
+    }
+  },
   methods: {
     handlePreview () {
+      // todo: something.
     },
     handleRemove () {
+      // todo: something
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
