@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     fileURL () {
-      return 'http://localhost:3000/api/lead/' + this.lead.id + '/singleDocument'
+      return 'https://drip-frontend.herokuapp.com/api/lead/' + this.lead.id + '/singleDocument'
     }
   },
   methods: {

@@ -69,7 +69,7 @@ export default {
     saveData () {
       this.processing = true
       axios({
-        url: 'http://localhost:3000/api/lead',
+        url: 'https://drip-frontend.herokuapp.com/api/lead',
         method: 'post',
         data: this.lead
       })

@@ -1,10 +1,10 @@
 <template>
   <el-container>
-    <el-header height="63px">
+    <el-header height="150px">
       <el-row>
         <el-col :span="24">
           <h1 class="main-logo">
-            Onboarding 101
+            <img src="../assets/cosmos-logo.png" alt="Logo" class="main-logo">
           </h1>
         </el-col>
       </el-row>
@@ -26,6 +26,8 @@ export default {}
 .main-logo {
   margin: 15px 0;
   text-align: center;
+  max-height: 100px;
+  width: auto;
 }
 .el-header {
   padding: 0;
